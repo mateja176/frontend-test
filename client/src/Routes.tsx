@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { NavItems } from './Layout';
 import Dashboard from './pages/Dashboard';
 import Upload from './pages/Upload';
+import { NavItems } from './utils/navItems';
 
 const Routes: React.FC = () => {
   return (

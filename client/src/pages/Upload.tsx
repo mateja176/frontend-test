@@ -1,22 +1,25 @@
-import { makeStyles } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
+import Collapse from '@material-ui/core/Collapse';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select, { SelectProps } from '@material-ui/core/Select';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Alert from '@material-ui/lab/Alert';
 import csv from 'csvtojson';
 import { FormikConfig, FormikErrors, useFormik } from 'formik';
 import React from 'react';
 import { useDropzone } from 'react-dropzone';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 import { AppContext } from '../context/context';
 import { GenericInput, IRecord } from '../models/input';
 import { predict } from '../services/predict';
+import { NavItems } from '../utils/navItems';
 import { transformData } from '../utils/utils';
 
 const initialValues: GenericInput = {
@@ -62,15 +65,27 @@ const validationSchema = yup
   });
 
 const Upload: React.FC<RouteComponentProps> = () => {
+  const history = useHistory();
+
   const { setPrediction, setInput } = React.useContext(AppContext);
+
+  const [submissionError, setSubmissionError] = React.useState<Error | null>(
+    null,
+  );
 
   const onSubmit: FormikConfig<GenericInput>['onSubmit'] = React.useCallback(
     (values) => {
       setInput(values);
 
-      return predict(values).then((prediction) => {
-        setPrediction(prediction);
-      });
+      return predict(values)
+        .then((prediction) => {
+          setPrediction(prediction);
+
+          history.push(NavItems.dashboard);
+        })
+        .catch((error: Error) => {
+          setSubmissionError(error);
+        });
     },
     [setPrediction, setInput],
   );
@@ -130,6 +145,9 @@ const Upload: React.FC<RouteComponentProps> = () => {
       <Box mb={3}>
         <Typography variant={'h2'}>Upload CSV file</Typography>
       </Box>
+      <Collapse in={!!submissionError}>
+        <Alert severity={'error'}>{submissionError}</Alert>
+      </Collapse>
       <form onSubmit={handleSubmit} style={formStyle}>
         <input {...getInputProps()} />
         <Box width={'100%'}>

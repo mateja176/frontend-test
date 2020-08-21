@@ -5,11 +5,7 @@ import CloudUpload from '@material-ui/icons/CloudUpload';
 import Dashboard from '@material-ui/icons/Dashboard';
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-
-export enum NavItems {
-  dashboard = '/dashboard',
-  upload = '/upload',
-}
+import { NavItems } from './utils/navItems';
 
 const Layout: React.FC = ({ children }) => {
   const history = useHistory();
