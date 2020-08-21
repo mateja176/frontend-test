@@ -11,7 +11,7 @@ const Dashboard: React.FC<RouteComponentProps> = () => {
     <Box>
       <Typography variant={'h2'}>Prediction</Typography>
       <Box>
-        <pre>{JSON.stringify(prediction)}</pre>
+        <pre>{JSON.stringify(prediction, null, 2)}</pre>
       </Box>
     </Box>
   );
