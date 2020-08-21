@@ -4,7 +4,14 @@ import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import React from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { AppContext } from '../context/context';
 import { NavItems } from '../utils/navItems';
 
@@ -32,6 +39,7 @@ const Dashboard: React.FC<RouteComponentProps> = () => {
                   index: moment(index).format('DD/MM/YYY'),
                 }))}
               >
+                <Tooltip />
                 <XAxis dataKey={'index'} />
                 <YAxis />
                 <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
