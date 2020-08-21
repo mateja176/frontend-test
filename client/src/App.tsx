@@ -1,4 +1,5 @@
 import React from 'react';
+import { hot } from 'react-hot-loader';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { AppContext, IAppContext, initialAppContext } from './context/context';
@@ -26,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default hot(module)(App);

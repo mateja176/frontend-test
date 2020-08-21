@@ -12,10 +12,14 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "csvtojson": "^2.0.10",
     "formik": "^2.1.5",
+    "moment": "^2.27.0",
+    "ramda": "^0.27.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.0.3",
+    "react-hot-loader": "^4.12.21",
     "react-query": "^2.8.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
@@ -44,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@types/ramda": "^0.27.14",
     "@types/react-router-dom": "^5.1.5",
     "@types/yup": "^0.29.6"
   }
