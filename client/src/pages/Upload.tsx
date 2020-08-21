@@ -87,7 +87,7 @@ const Upload: React.FC<RouteComponentProps> = () => {
           setSubmissionError(error);
         });
     },
-    [setPrediction, setInput],
+    [setPrediction, setInput, history],
   );
 
   const {

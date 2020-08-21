@@ -24,6 +24,7 @@
     "react-query": "^2.8.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "react-virtualized-auto-sizer": "^1.0.2",
     "recharts": "^1.8.5",
     "typescript": "~3.7.2",
     "yup": "^0.29.3"
@@ -52,6 +53,8 @@
   "devDependencies": {
     "@types/ramda": "^0.27.14",
     "@types/react-router-dom": "^5.1.5",
+    "@types/react-virtualized-auto-sizer": "^1.0.0",
+    "@types/recharts": "^1.8.14",
     "@types/yup": "^0.29.6"
   }
 }
