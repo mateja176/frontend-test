@@ -1,4 +1,4 @@
-export interface Record {
+export interface IRecord {
   /**
    * The value of index can either be an increasing integer or a timestamp and both
    */
@@ -8,9 +8,9 @@ export interface Record {
 /**
  * Can contain any number of fields. Those fields must be consistent between all the objects, but can be null
  */
-export type Data<A extends Record> = A[];
+export type Data<A extends IRecord> = A[];
 
-export interface Input<A extends Record, K extends Exclude<keyof A, 'index'>> {
+export interface Input<A extends IRecord, K extends Exclude<keyof A, 'index'>> {
   data: Data<A>;
   target: K;
 }
@@ -43,3 +43,8 @@ const input: Input<Example, 'price'> = {
   ],
   target: 'price',
 };
+
+export interface GenericInput {
+  data: Data<IRecord>;
+  target: string;
+}
