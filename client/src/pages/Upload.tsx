@@ -62,15 +62,17 @@ const validationSchema = yup
   });
 
 const Upload: React.FC<RouteComponentProps> = () => {
-  const { setPrediction } = React.useContext(AppContext);
+  const { setPrediction, setInput } = React.useContext(AppContext);
 
   const onSubmit: FormikConfig<GenericInput>['onSubmit'] = React.useCallback(
     (values) => {
+      setInput(values);
+
       return predict(values).then((prediction) => {
         setPrediction(prediction);
       });
     },
-    [setPrediction],
+    [setPrediction, setInput],
   );
 
   const {

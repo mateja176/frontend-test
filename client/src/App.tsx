@@ -10,10 +10,13 @@ function App() {
   const [prediction, setPrediction] = React.useState<IAppContext['prediction']>(
     initialAppContext.prediction,
   );
+  const [input, setInput] = React.useState<IAppContext['input']>(
+    initialAppContext.input,
+  );
 
   const value: IAppContext = React.useMemo(
-    () => ({ prediction, setPrediction }),
-    [prediction],
+    () => ({ prediction, setPrediction, input, setInput }),
+    [prediction, input],
   );
 
   return (
